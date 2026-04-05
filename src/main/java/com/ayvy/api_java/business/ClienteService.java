@@ -1,0 +1,67 @@
+package com.ayvy.api_java.business;
+
+import com.ayvy.api_java.infrastructure.entitys.Cliente;
+import com.ayvy.api_java.infrastructure.repository.ClienteRepository;
+import org.springframework.stereotype.Service;
+
+@Service
+
+public class ClienteService {
+
+    //Injetando o Repository manualmente aqui no service
+    private final ClienteRepository repository;
+
+    public ClienteService(ClienteRepository repository) {
+        this.repository = repository;
+    }
+
+    //CRIANDO O CRUD:
+    //Create
+    //Read
+    //Update
+    //Delete
+
+
+    //'void' é que não retorna nada:
+    //Aqui é a parte de 'CREATE'
+    public void salvarCliente(Cliente cliente){
+        repository.saveAndFlush(cliente);
+        //'saveAndFlush' = salva e fecha conexão com BD
+    }
+
+    //buscar cliente por email 'READ'
+    public Cliente buscarClientePorEmail(String email){
+
+        return repository.findByEmail(email).orElseThrow(
+                //Uma exceção personalizada:
+                () -> new RuntimeException("Email não encontrado")
+        );
+    }
+
+    //deletar cliente por email 'DELETE' --> função criada no repository
+    public void deletarClientePorEmail (String email){
+        repository.deleteByEmail(email);
+    }
+
+    //Atualizar os dados do cliente 'Update':
+    public void atualizarClientePorId(Long id, Cliente cliente){
+        Cliente clienteEntity = repository.findById(id).orElseThrow(
+                () -> new RuntimeException("Usuário/cliente não encontrado")
+        );
+
+        Cliente clienteAtualizado = Cliente.builder()
+                .email(cliente.getEmail() != null ?
+                        cliente.getEmail() : clienteEntity.getEmail())
+                .nome(cliente.getNome() != null ?
+                        cliente.getNome() : clienteEntity.getNome())
+                .telefone(cliente.getTelefone() != null ?
+                        cliente.getTelefone() : clienteEntity.getTelefone())
+                //CPF e Id não serão alterados:
+                .cpf(clienteEntity.getCpf())
+                .id(clienteEntity.getId())
+                .build();
+
+        repository.saveAndFlush(clienteAtualizado);
+    }
+
+}
