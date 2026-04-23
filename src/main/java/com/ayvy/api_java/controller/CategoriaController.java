@@ -21,8 +21,8 @@ public class CategoriaController {
     }
 
     @GetMapping
-    public ResponseEntity<Categoria> buscarCateoriaPorNome_catgoria(@RequestParam String nome_categoria) {
-        return ResponseEntity.ok(categoriaService.buscarCategoriaPorNome_categoria(nome_categoria));
+    public ResponseEntity<Categoria> buscarCateoriaPorNomeCatgoria(@RequestParam String nomeCategoria) {
+        return ResponseEntity.ok(categoriaService.buscarCategoriaPorNomeCategoria(nomeCategoria));
     }
 
     @DeleteMapping

@@ -17,9 +17,9 @@ public class CategoriaService {
     }
 
     //READ
-    public Categoria buscarCategoriaPorNome_categoria(String nome_categoria){
+    public Categoria buscarCategoriaPorNomeCategoria(String nomeCategoria){
 
-        return repository.findByNome_categoria(nome_categoria).orElseThrow(
+        return repository.findByNomeCategoria(nomeCategoria).orElseThrow(
                 //Uma exceção personalizada:
                 () -> new RuntimeException("Categoria não encontrada")
         );
@@ -39,8 +39,8 @@ public class CategoriaService {
 
          Categoria categoriaAtualizado = Categoria.builder()
                  .id(categoriaEntity.getId())
-                 .nome_categoria(categoria.getNome_categoria() != null ?
-                         categoria.getNome_categoria() : categoriaEntity.getNome_categoria())
+                 .nomeCategoria(categoria.getNomeCategoria() != null ?
+                         categoria.getNomeCategoria() : categoriaEntity.getNomeCategoria())
                  .build();
 
          repository.saveAndFlush(categoriaAtualizado);

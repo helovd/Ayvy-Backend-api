@@ -19,6 +19,6 @@ public class Categoria {
 
     //permitir apenas números? a organização, como em telefone o padrão '11 9xxxx-xxxx', é com o front?
     @Column(name = "nome_categoria")
-    private String nome_categoria;
+    private String nomeCategoria;
 
 }

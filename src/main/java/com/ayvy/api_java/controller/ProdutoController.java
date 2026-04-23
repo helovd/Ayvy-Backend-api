@@ -32,7 +32,7 @@ public class ProdutoController {
 
     //Para deletar:
     @DeleteMapping
-    public ResponseEntity<Void> deletarProdutoPorId(@RequestParam Long id){
+    public ResponseEntity<Void> deletarProdutoPorId(@RequestParam Integer id){
         produtoService.deletarProdutoPorId(id);
         return ResponseEntity.ok().build();
     }
