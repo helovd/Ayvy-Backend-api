@@ -29,7 +29,7 @@ public class Produto {
     private Integer id;
 
     @Column(name = "nome_produto")
-    private String nome_produto;
+    private String nomeProduto;
 
     @Column(name = "preco")
     private BigDecimal preco;

@@ -41,7 +41,7 @@ public class ClienteController {
     //Para deletar:
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletarClientePorId(@PathVariable Integer id){
-        clienteService.deletarClientePorEmail(email);
+        clienteService.deletarClientePorId(id);
         return ResponseEntity.ok().build();
     }
 
