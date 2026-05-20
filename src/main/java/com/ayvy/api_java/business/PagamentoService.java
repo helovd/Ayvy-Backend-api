@@ -1,7 +1,7 @@
 package com.ayvy.api_java.business;
 
-import com.ayvy.api_java.infrastructure.entitys.Pagamento;
-import com.ayvy.api_java.infrastructure.repository.PagamentoRepository;
+import com.ayvy.api_java.infrastructure.entities.Pagamento;
+import com.ayvy.api_java.infrastructure.repositories.PagamentoRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

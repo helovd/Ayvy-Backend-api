@@ -1,7 +1,7 @@
 package com.ayvy.api_java.business;
 
-import com.ayvy.api_java.infrastructure.entitys.Categoria;
-import com.ayvy.api_java.infrastructure.repository.CategoriaRepository;
+import com.ayvy.api_java.infrastructure.entities.Categoria;
+import com.ayvy.api_java.infrastructure.repositories.CategoriaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

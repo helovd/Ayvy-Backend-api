@@ -1,7 +1,7 @@
 package com.ayvy.api_java.controller;
 
 import com.ayvy.api_java.business.EnderecoService;
-import com.ayvy.api_java.infrastructure.entitys.Endereco;
+import com.ayvy.api_java.infrastructure.entities.Endereco;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

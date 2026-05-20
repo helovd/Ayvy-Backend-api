@@ -1,7 +1,7 @@
 package com.ayvy.api_java.business;
 
-import com.ayvy.api_java.infrastructure.entitys.Endereco;
-import com.ayvy.api_java.infrastructure.repository.EnderecoRepository;
+import com.ayvy.api_java.infrastructure.entities.Endereco;
+import com.ayvy.api_java.infrastructure.repositories.EnderecoRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -1,7 +1,6 @@
-package com.ayvy.api_java.infrastructure.repository;
+package com.ayvy.api_java.infrastructure.repositories;
 
-import com.ayvy.api_java.infrastructure.entitys.Produto;
-import jakarta.transaction.Transactional;
+import com.ayvy.api_java.infrastructure.entities.Produto;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ProdutoRepository extends JpaRepository<Produto, Integer> {

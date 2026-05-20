@@ -1,7 +1,6 @@
-package com.ayvy.api_java.infrastructure.repository;
+package com.ayvy.api_java.infrastructure.repositories;
 
-import com.ayvy.api_java.infrastructure.entitys.Categoria;
-import jakarta.transaction.Transactional;
+import com.ayvy.api_java.infrastructure.entities.Categoria;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

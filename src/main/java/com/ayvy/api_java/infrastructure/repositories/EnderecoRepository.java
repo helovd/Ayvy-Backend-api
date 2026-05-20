@@ -1,10 +1,8 @@
-package com.ayvy.api_java.infrastructure.repository;
+package com.ayvy.api_java.infrastructure.repositories;
 
-import com.ayvy.api_java.infrastructure.entitys.Endereco;
+import com.ayvy.api_java.infrastructure.entities.Endereco;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.util.Optional;
 
 public interface EnderecoRepository extends JpaRepository<Endereco, Long> {
 

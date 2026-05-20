@@ -1,6 +1,7 @@
-package com.ayvy.api_java.infrastructure.entitys;
+package com.ayvy.api_java.infrastructure.entities;
 
 
+import com.ayvy.api_java.infrastructure.enums.StatusProduto;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -18,7 +19,7 @@ import java.time.LocalDateTime;
 //Para futuros Updates:
 @Builder
 //Indicar que é tabela:
-@Table(name = "produto")
+@Table(name = "produtos")
 @Entity
 
 public class Produto {
@@ -28,14 +29,31 @@ public class Produto {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Column(name = "nome_produto")
-    private String nomeProduto;
+    @Column(name = "nome", nullable = false)
+    private String nome;
+
+    @Column(name = "slug", nullable = false)
+    private String slug;
 
     @Column(name = "preco")
     private BigDecimal preco;
 
     @Column(name="descricao")
     private String descricao;
+
+    @Column(name = "estoque", nullable = false)
+    private Integer estoque;
+
+    @Column(name = "imagem_principal_url")
+    private String imagemPrincipalUrl;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status", nullable = false)
+    private StatusProduto statusProduto =  StatusProduto.RASCUNHO;
+
+    //Criar de visualizacoes
+    //@Column(name="visualizacoes_total", nullable = false)
+    //private int visualizacoesProduto
 
     //Data de criação e atualização da data toda vez que a entity sofre um UPDATE
     @CreationTimestamp

@@ -1,6 +1,6 @@
-package com.ayvy.api_java.infrastructure.repository;
+package com.ayvy.api_java.infrastructure.repositories;
 
-import com.ayvy.api_java.infrastructure.entitys.Mensagem;
+import com.ayvy.api_java.infrastructure.entities.Mensagem;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

@@ -1,7 +1,7 @@
 package com.ayvy.api_java.business;
 
-import com.ayvy.api_java.infrastructure.entitys.Mensagem;
-import com.ayvy.api_java.infrastructure.repository.MensagemRepository;
+import com.ayvy.api_java.infrastructure.entities.Mensagem;
+import com.ayvy.api_java.infrastructure.repositories.MensagemRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

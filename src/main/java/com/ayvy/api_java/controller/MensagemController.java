@@ -1,7 +1,7 @@
 package com.ayvy.api_java.controller;
 
 import com.ayvy.api_java.business.MensagemService;
-import com.ayvy.api_java.infrastructure.entitys.Mensagem;
+import com.ayvy.api_java.infrastructure.entities.Mensagem;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

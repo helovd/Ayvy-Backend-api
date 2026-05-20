@@ -1,4 +1,4 @@
-package com.ayvy.api_java.infrastructure.entitys;
+package com.ayvy.api_java.infrastructure.entities;
 //!!!!!!!!!!!!!!!VERIFICAR OS RELACIONAMENTOS NO BD - CONCEITUAL!!!!!!!!!
 import jakarta.persistence.*;
 import lombok.*;
@@ -6,22 +6,20 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-//*********************************************************************
- //   PROVÁVELMENTE NÃO VAMOS UTILIZAR A ENTIDADE ENTREGA!!!
-//    (já que não vamos ficar responsáveis por isso)
- //******************************************************
+
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table(name = "pedido")
+@Table(name = "pagamento")
 @Entity
 
-public class Pedido {
+
+public class Pagamento {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue (strategy = GenerationType.AUTO)
     private Integer id;
 
     @Column (name = "status")
@@ -32,7 +30,9 @@ public class Pedido {
 
     @CreationTimestamp
     @Column (name = "data", nullable = false)
-    private LocalDateTime dataPedido;
+    private LocalDateTime dataPagamento;
 
+    @Column (name = "tipo")
+    private String tipo;
 
 }

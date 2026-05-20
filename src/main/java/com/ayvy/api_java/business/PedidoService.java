@@ -1,7 +1,7 @@
 package com.ayvy.api_java.business;
 
-import com.ayvy.api_java.infrastructure.entitys.Pedido;
-import com.ayvy.api_java.infrastructure.repository.PedidoRepository;
+import com.ayvy.api_java.infrastructure.entities.Pedido;
+import com.ayvy.api_java.infrastructure.repositories.PedidoRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

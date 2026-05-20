@@ -1,4 +1,4 @@
-package com.ayvy.api_java.infrastructure.entitys;
+package com.ayvy.api_java.infrastructure.entities;
 
 import jakarta.persistence.*;
 import lombok.*;

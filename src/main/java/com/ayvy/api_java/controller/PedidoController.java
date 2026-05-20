@@ -1,7 +1,7 @@
 package com.ayvy.api_java.controller;
 
 import com.ayvy.api_java.business.PedidoService;
-import com.ayvy.api_java.infrastructure.entitys.Pedido;
+import com.ayvy.api_java.infrastructure.entities.Pedido;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

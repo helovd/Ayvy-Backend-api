@@ -1,7 +1,7 @@
 package com.ayvy.api_java.controller;
 
 import com.ayvy.api_java.business.ClienteService;
-import com.ayvy.api_java.infrastructure.entitys.Cliente;
+import com.ayvy.api_java.infrastructure.entities.Cliente;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
