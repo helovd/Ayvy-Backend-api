@@ -1,6 +1,9 @@
 package com.ayvy.api_java.business;
 
 import com.ayvy.api_java.infrastructure.entities.Cliente;
+import com.ayvy.api_java.infrastructure.entities.Usuario;
+import com.ayvy.api_java.infrastructure.enums.PapelUsuario;
+import com.ayvy.api_java.infrastructure.enums.StatusUsuario;
 import com.ayvy.api_java.infrastructure.repositories.ClienteRepository;
 import org.springframework.stereotype.Service;
 
@@ -12,9 +15,12 @@ public class ClienteService {
 
     //Injetando o Repository manualmente aqui no service
     private final ClienteRepository repository;
+    private final UsuarioService usuarioService;
 
-    public ClienteService(ClienteRepository repository) {
+    public ClienteService(
+            ClienteRepository repository, UsuarioService usuarioService) {
         this.repository = repository;
+        this.usuarioService = usuarioService;
     }
 
     //CRIANDO O CRUD:
@@ -26,17 +32,26 @@ public class ClienteService {
 
     //'void' é que não retorna nada:
     //Aqui é a parte de 'CREATE'
-    public void salvarCliente(Cliente cliente){
-        repository.saveAndFlush(cliente);
-        //'saveAndFlush' = salva e fecha conexão com BD
+    public Cliente salvarCliente(Cliente cliente){
+
+        //Salvando de forma automática como ATIVO e trazendo o que for cliente.
+        cliente.getUsuario().setPapel(PapelUsuario.CLIENTE);
+        cliente.getUsuario().setStatus(StatusUsuario.ATIVO);
+
+        Usuario usuarioSalvo = usuarioService.salvarUsuario(cliente.getUsuario());
+
+        cliente.setUsuario(usuarioSalvo);
+
+        return repository.saveAndFlush(cliente);
+        //'saveAndFlush' = salva e força sincronização com BD
     }
 
     //buscar cliente por email 'READ'
-    public Cliente buscarClientePorEmail(String email){
+    public Cliente buscarClientePorId(Integer id){
 
-        return repository.findByEmail(email).orElseThrow(
+        return repository.findById(id).orElseThrow(
                 //Uma exceção personalizada:
-                () -> new RuntimeException("Email não encontrado")
+                () -> new RuntimeException("Cliente não encontrado")
         );
     }
 
@@ -50,32 +65,20 @@ public class ClienteService {
     }
 
     //Atualizar os dados do cliente 'Update':
-    public String atualizarClientePorId(Integer id, Cliente cliente){
+    public Cliente atualizarClientePorId(Integer id, Cliente cliente){
         Cliente clienteEntity = repository.findById(id).orElseThrow(
                 () -> new RuntimeException("Usuário/cliente não encontrado")
         );
 
-        if(cliente.getNome()!=null) {
-            clienteEntity.setNome(cliente.getNome());
-        }
-        if(cliente.getEmail()!=null) {
-            clienteEntity.setEmail(cliente.getEmail());
+        if(cliente.getDataNascimento()!=null) {
+            clienteEntity.setDataNascimento(cliente.getDataNascimento());
         }
         if(cliente.getCpf()!=null) {
             clienteEntity.setCpf(cliente.getCpf());
         }
-        if(cliente.getTelefone()!=null) {
-            clienteEntity.setTelefone(cliente.getTelefone());
-        }
-        if(cliente.getNomeUsuario()!=null) {
-            clienteEntity.setNomeUsuario(cliente.getNomeUsuario());
-        }
-        if (cliente.getSenha()!=null) {
-            clienteEntity.setSenha(cliente.getSenha());
-        }
 
-        repository.saveAndFlush(clienteEntity);
-        return ("Alterações salvas com sucesso!");
+       return repository.saveAndFlush(clienteEntity);
+      //  return ("Alterações salvas com sucesso!");
     }
 
         /* ========= ! FORMA ANTIGA ! =============================================

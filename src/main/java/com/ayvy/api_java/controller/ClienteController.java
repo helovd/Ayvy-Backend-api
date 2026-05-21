@@ -28,9 +28,9 @@ public class ClienteController {
     }
 
     //Para buscar:
-    @GetMapping("/{email}")
-    public ResponseEntity<Cliente> buscarClientePorEmail(@PathVariable String email) {
-        return ResponseEntity.ok(clienteService.buscarClientePorEmail(email));
+    @GetMapping("/{id}")
+    public ResponseEntity<Cliente> buscarClientePorId(@PathVariable Integer id) {
+        return ResponseEntity.ok(clienteService.buscarClientePorId(id));
     }
 
     @GetMapping
@@ -49,6 +49,8 @@ public class ClienteController {
     @PutMapping("/{id}")
     public ResponseEntity<Void> atualizarClientePorId(@PathVariable Integer id,
                                                       @RequestBody Cliente cliente){
+        //Adicionar para retornar o Cliente Atualizado
+
         clienteService.atualizarClientePorId(id, cliente);
         return ResponseEntity.ok().build();
     }

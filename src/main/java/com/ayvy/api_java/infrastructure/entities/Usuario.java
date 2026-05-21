@@ -38,7 +38,7 @@ public class Usuario {
     private String telefone;
 
     @Column(name = "avatar_url")
-    private String avatrUrl;
+    private String avatarUrl;
 
     //Enum
     @Enumerated(EnumType.STRING)

@@ -24,9 +24,9 @@ public class ProdutoService {
     //Delete
 
     //"CREATE"
-    public String salvarProduto(Produto produto){
-        repository.saveAndFlush(produto);
-        return ("Produto salvo!");
+    public Produto salvarProduto(Produto produto){
+        return repository.saveAndFlush(produto);
+        //return ("Produto salvo!");
     }
 
     //"READ"
@@ -43,17 +43,17 @@ public class ProdutoService {
     }
 
     //"DELETE"
-    public String deletarProdutoPorId(Integer id){
+    public void deletarProdutoPorId(Integer id){
         repository.deleteById(id);
-        return ("Produto deletado.");
+       // return ("Produto deletado.");
     }
 
     //"UPDATDE"
-    public String atualizarProdutoPorId(Integer id, Produto produto){
+    public Produto atualizarProdutoPorId(Integer id, Produto produto){
         Produto produtoEntity =  buscarProdutoPorId(id);
 
-        if(produto.getNome_produto() != null){
-            produtoEntity.setNome_produto(produto.getNome_produto());
+        if(produto.getNome() != null){
+            produtoEntity.setNome(produto.getNome());
         }
         if(produto.getPreco() != null){
         produtoEntity.setPreco(produto.getPreco());
@@ -61,9 +61,12 @@ public class ProdutoService {
         if(produto.getDescricao() != null){
             produtoEntity.setDescricao(produto.getDescricao());
         }
+        if(produto.getImagemPrincipalUrl() != null){
+            produtoEntity.setImagemPrincipalUrl(produto.getImagemPrincipalUrl());
+        }
 
-        repository.saveAndFlush(produtoEntity);
-        return ("Produto atualizado com sucesso!");
+        return repository.saveAndFlush(produtoEntity);
+       // return ("Produto atualizado com sucesso!");
 
     }
 
